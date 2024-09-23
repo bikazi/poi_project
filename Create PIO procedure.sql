@@ -12,7 +12,7 @@ BEGIN
     DECLARE @GeoJSON NVARCHAR(MAX);
     DECLARE @StartTime DATETIME = GETDATE();
     DECLARE @DurationMilliseconds INT;
-    DECLARE @Success BIT = 0; -- Initialize success flag
+    DECLARE @Success BIT = 0; 
 
     BEGIN TRY
         -- Declare variables to hold parsed JSON values
@@ -70,8 +70,8 @@ BEGIN
         JOIN poi.d_region reg ON loc.region_id = reg.region_id
         LEFT JOIN poi.d_category cat ON loc.category_id = cat.category_id
         WHERE 1=1';
-
-        -- Append filters based on criteria
+		  
+		 
         IF @CountryCode IS NOT NULL
             SET @SQL += ' AND reg.country_code = @CountryCode';
 
@@ -101,6 +101,7 @@ BEGIN
         FOR JSON PATH, WITHOUT_ARRAY_WRAPPER';
 
         -- Execute the dynamic SQL
+
         EXEC @GeoJSON = sp_executesql @SQL,
             N'@CountryCode VARCHAR(10), @RegionCode VARCHAR(30), @CityName VARCHAR(150), 
               @CurrentLongitude FLOAT, @CurrentLatitude FLOAT, @Radius FLOAT, 
@@ -128,12 +129,12 @@ BEGIN
         INSERT INTO logs.ExecutionLog (ProcedureName, ExecutionTime, Success, ErrorMessage)
         VALUES ('poi.GetPOIs', GETDATE(), 0, @ErrorMessage);
 
-        -- Return error details to the caller
+        
         SELECT @ErrorMessage AS ErrorMessage, 
                @ErrorSeverity AS ErrorSeverity, 
                @ErrorState AS ErrorState;
 
-        RETURN; -- Exit the procedure
+        RETURN; 
     END CATCH
 
     -- Log successful execution
