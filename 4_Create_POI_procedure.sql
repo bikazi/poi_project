@@ -146,7 +146,7 @@ END;
 
 ----------------------/  ************* PROCEDURE EXECUTION *************   / ------------------------------
 
-
+/*
 DECLARE @SearchCriteria NVARCHAR(MAX) = 
 '{
     "country": "US",
@@ -163,3 +163,4 @@ EXEC poi.GetPOIs @SearchCriteria;
 DECLARE @SearchCriteria NVARCHAR(MAX) = '{}'; 
 
 EXEC poi.GetPOIs @SearchCriteria;
+*/
