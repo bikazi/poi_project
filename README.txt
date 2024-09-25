@@ -7,3 +7,4 @@ c) Logs Schema: This schema contains two tables for error logs and execution log
 3 - execute 3_Insert_into_script for data migration from stg phoenix file to database 
 4- execute 4_create_poi_procedure to create procedure GetPoi. This procedure returns data in JSON format. At the end of the script, you will find examples of execution using dummy parameters, as well as an execution that returns all rows. 
 5_Backup_and_restore doing backup and restore POI database. You need to set up backup/restore location.
+Here is stored .bak file: https://drive.google.com/file/d/1mkVv8stcOrijCEqIvqEgIAu5XLL7H_Jo/view?usp=drive_link
